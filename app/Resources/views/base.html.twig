@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Blog Toptive{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="shortcut icon" href="https://www.toptive.co/wp-content/themes/toptive/assets/brand/black_logo.png"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" >
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery-3.2.1.slim.min.js') }}"></script>
+
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+
+{% endblock %}
+
+</body>
+</html>
