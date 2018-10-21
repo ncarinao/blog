@@ -88,7 +88,7 @@ class PostController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_posts_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('admin_posts_show', array('id' => $post->getId()));
         }
 
         return $this->render('post/edit.html.twig', array(
@@ -101,7 +101,7 @@ class PostController extends Controller
     /**
      * Deletes a post entity.
      *
-     * @Route("/{id}", name="admin_posts_delete")
+     * @Route("/{id}/delete", name="admin_posts_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Post $post)

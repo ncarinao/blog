@@ -1,42 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="">Posts list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-            <tr>
-                <td><a href="{{ path('admin_posts_show', { 'id': post.id }) }}">{{ post.id }}</a></td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_posts_show', { 'id': post.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_posts_edit', { 'id': post.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="col-md-12">
 
-    <ul>
-        <li>
-        <button class="button button-danger">hola </button>
-            <a href="{{ path('admin_posts_new') }}">Create a new post</a>
-        </li>
-    </ul>
+                <div class="header">
+                    <h4 class="title font-weight-bold text-center text-white">Artículos</h4>
+                    <br>
+                </div>
+
+                <div class="row">
+                    {% for post in posts %}
+                        <a class="col-md-3 " style="text-decoration: none; margin-bottom: 20px" href="{{ path('admin_posts_show', { 'id': post.id }) }}">
+                            <div class="card border-info bg-info">
+                                <div class="card-body">
+                                <h5 class="text-center font-weight-bold text-white">{{ post.title }}</h5>
+                                </div>
+                            </div>
+                        </a>
+
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a class="btn btn-info btn-fill btn-wd" href="{{ path('admin_posts_new') }}">Nuevo Post</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

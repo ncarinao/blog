@@ -1,21 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Post edit</h1>
+    {% block body %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div class="content">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <div class="header">
+                        <h4 class="title font-weight-bold text-center text-white">Editar Post</h4>
+                        <br>
+                    </div>
+                    <div class="content">
+                        {{ form_start(edit_form) }}
+                        <div class="col-md-6 offset-md-3">
+                            <div class="form-group label-floating">
+                                <label class="font-weight-bold text-white">Titulo</label>
+                                {{ form_widget(edit_form.title, { 'attr': {'class':'form-control', onchange:'capitalize()'}})}}
+                            </div>
+                        </div>
+                        <div class="col-md-6 offset-md-3">
+                            <div class="form-group label-floating">
+                                <label class="font-weight-bold text-white">Descripción</label>
+                                {{ form_widget(edit_form.description, { 'attr': {'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class="col-md-6 offset-md-3 text-center">
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_posts_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                            <input class="btn btn-info" id="action" type="submit" value="Confirmar" />
+                            <a class="btn btn-dark " href="{{ path('homepage') }}">Volver</a>
+                            <a class="btn btn-danger " href="{{ path('admin_posts_delete', { 'id': post.id }) }}">Eliminar</a>
+
+                        </div>
+                        {{ form_end(edit_form) }}
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    {% endblock %}
+{% block javascripts %}
+<script>
+function capitalize() {
+    var x = document.getElementById("appbundle_post_title");
+    x.value = x.value.toLowerCase();
+    x.value=x.value.charAt(0).toUpperCase() + x.value.slice(1);
+   }
+</script>
 {% endblock %}

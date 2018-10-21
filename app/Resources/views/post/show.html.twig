@@ -1,36 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Post</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ post.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="header">
+        <h3 class="font-weight-bold text-center text-white">{{ post.title }}</h3>
+        <br>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_posts_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_posts_edit', { 'id': post.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="content">
+        <div class="card border-info col-md-8 offset-md-2">
+
+
+
+            <div class="form-group label-floating">
+                <h5 class="font-weight-bold text-center border-bottom border-dark">Descripción</h5>
+                <div class="text-justify">
+                    {{ post.description }}
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="col-md-4 offset-md-4 text-center">
+
+            <a class="btn btn-info" href="{{ path('admin_posts_edit', { 'id': post.id }) }}">Editar</a>
+            <a class="btn btn-dark" href="{{ path('homepage') }}">Volver</a>
+            <a class="btn btn-danger" href="{{ path('admin_posts_delete', { 'id': post.id }) }}">Eliminar</a>
+
+    </div>
+
+
 {% endblock %}

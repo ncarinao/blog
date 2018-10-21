@@ -1,16 +1,53 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Post creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_posts_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="header">
+                    <h4 class="title font-weight-bold text-center text-white">Crear Post</h4>
+                    <br>
+                </div>
+                <div class="content">
+                    {{ form_start(form) }}
+                    <div class="col-md-6 offset-md-3">
+                        <div class="form-group label-floating">
+                            <label class="font-weight-bold text-white">Titulo</label>
+                            {{ form_widget(form.title, { 'attr': {'class':'form-control', onchange:'capitalize()'}})}}
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3">
+                        <div class="form-group label-floating">
+                            <label class="font-weight-bold text-white">Descripción</label>
+                            {{ form_widget(form.description, { 'attr': {'class':'form-control'}})}}
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3 text-center">
+
+
+                        <input class="btn btn-info" id="action" type="submit" value="Crear" />
+                        <a class="btn btn-dark " href="{{ path('homepage') }}">Volver</a>
+
+
+                    </div>
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+
+<script>
+    function capitalize() {
+        var x = document.getElementById("appbundle_post_title");
+        x.value = x.value.toLowerCase();
+        x.value=x.value.charAt(0).toUpperCase() + x.value.slice(1);
+    }
+</script>
 {% endblock %}

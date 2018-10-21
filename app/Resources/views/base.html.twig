@@ -15,10 +15,17 @@
 
     {% endblock %}
 </head>
-<body>
-{% block body %}
+<body style="background: #3d03a7">
 
-{% endblock %}
+    {% include 'default/header.html.twig' %}
+    <br>
+    <div class="content">
+        <div class="container-fluid">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
